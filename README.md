@@ -25,8 +25,7 @@ S3MXFDownloader is a powerful tool for efficiently downloading MXF (Material Exc
    - `REGION`: The AWS region for the S3 bucket.
    - `PREFIX`: The prefix to filter MXF files in the S3 bucket.
    - `DB_CONNECTION_STRING`: The connection string for the PostgreSQL database.
-3. Run the program using `go run main.go`.
-4. Send a POST request to the program's endpoint to initiate the download process, for example:   
+3. Send a POST request to the program's endpoint to initiate the download process, for example:   
 ```
 
     curl -i --header 'Content-Type: application/json' --request POST --data '{"START"}' http://localhost:8080
