@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: loadmxfs3
+  labels:
+    name: loadmxfs3
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: loadmxfs3
+  template:
+    metadata:
+      labels:
+        app: loadmxfs3
+    spec:
+      containers:
+      - name: loadmxfs3
+        image: defosa/imagename:0.01 / specify your image
+        envFrom:
+          - secretRef:
+             name: env-loadmxfs3
+        ports:
+        - containerPort: 8080
+        command: ["./app"]
+        volumeMounts:
+        - name: test-pv
+          mountPath: /app/shared   
+      volumes:
+        - name: test-pv
+          persistentVolumeClaim:
+            claimName: csi-s3-pvc-loadmxfs32                                               
+      restartPolicy: Always
